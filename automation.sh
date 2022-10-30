@@ -42,3 +42,25 @@ tar -cvf /tmp/${my_name}-httpd-logs-${time_stamp}.tar /var/log/apache2/*.log
 aws s3 \
 cp /tmp/${my_name}-httpd-logs-${time_stamp}.tar \
 s3://${s3_bucket_name}/${my_name}-httpd-logs-${time_stamp}.tar
+
+#Task 3
+
+#Step 1: Bookkeeping
+if [ -f /var/www/html/inventory.html ]
+then
+        echo "Inventory file already exists"
+else
+        echo "Creating inventory file"
+        touch /var/www/html/inventory.html
+        echo -e "<b>Log Type /t Time Created /t Type /t Size</b>" >> /var/www/html/inventory.html
+fi
+
+#Step 2: Cron job
+if [ -f /etc/cron.d/automation ]
+then
+        echo "Automation cron job already exists"
+else
+        echo "Creating Automation cron job"
+        touch /etc/cron.d/automation
+        echo "0 0 * * * root /root/Automation_Project" >> /etc/cron.d/automation
+fi
