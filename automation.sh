@@ -52,8 +52,9 @@ then
 else
         echo "Creating inventory file"
         touch /var/www/html/inventory.html
-        echo -e "<b>Log Type /t Time Created /t Type /t Size</b>" >> /var/www/html/inventory.html
+        echo -e "<b>Log Type     Time Created     Type    Size</b>" >> /var/www/html/inventory.html
 fi
+echo -e "httpd-logs     ${time_stamp}     tar    `du -h /tmp/${my_name}-httpd-logs-${time_stamp}.tar | awk '{print $1}'`" >> /var/www/html/inventory.html
 
 #Step 2: Cron job
 if [ -f /etc/cron.d/automation ]
