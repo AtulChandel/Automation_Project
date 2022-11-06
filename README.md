@@ -1,7 +1,7 @@
 # Automation_Project
 Upgrad DevOps Assignment
 
-Task 1
+Task 2
 1. Perform package update
 2. Install Apache2 if not already installed
 3. Ensure Apache2 is running
